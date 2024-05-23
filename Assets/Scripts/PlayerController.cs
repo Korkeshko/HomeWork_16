@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVector;
     private float gravity; 
     private bool isGrounded;   
-    private float horizontal = 0.0f;
+    private float xRotation = 0;
     private new Camera camera;
     private Glasses glasses;
     private bool glassesOn = false;
@@ -58,9 +58,9 @@ public class PlayerController : MonoBehaviour
 
         float mouseX = Input.GetAxis("Mouse X") * rotationPower * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * rotationPower * Time.deltaTime;
-        horizontal -= mouseY;
-        horizontal = Mathf.Clamp(horizontal, -80f, 80f);
-        camera.transform.localRotation = Quaternion.Euler(horizontal, 0f, 0f);
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        camera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);    
     }
 }
